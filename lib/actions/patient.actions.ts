@@ -27,3 +27,13 @@ export const createUser = async (user: CreateUserParams) => {
     console.log(error);
   }
 };
+
+export const getUser = async (userId: string) => {
+  try {
+    const user = await users.get(userId);
+
+    return parseStringify(user);
+  } catch (error) {
+    console.error(error);
+  }
+};

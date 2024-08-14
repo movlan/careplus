@@ -1,9 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
 import { Control } from "react-hook-form";
-import "react-phone-number-input/style.css";
 import PhoneInput, { Value } from "react-phone-number-input";
+import Image from "next/image";
+
 import {
   FormControl,
   FormDescription,
@@ -14,7 +16,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { FormFieldType } from "./form/PatientForm";
-import Image from "next/image";
+
+import "react-phone-number-input/style.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 interface CustomFormFieldProps {
   control: Control<any>;
@@ -39,7 +43,15 @@ const RenderField = ({
   field: any;
   props: CustomFormFieldProps;
 }) => {
-  const { inputPlaceholder, iconSrc, iconAlt, fieldType } = props;
+  const {
+    dateFormat,
+    fieldType,
+    iconAlt,
+    iconSrc,
+    inputPlaceholder,
+    renderSkeleton,
+    showTimeSelector = false,
+  } = props;
 
   switch (fieldType) {
     case FormFieldType.INPUT:
@@ -63,7 +75,6 @@ const RenderField = ({
           </FormControl>
         </div>
       );
-
     case FormFieldType.PHONE_INPUT:
       return (
         <FormControl>
@@ -78,19 +89,37 @@ const RenderField = ({
           />
         </FormControl>
       );
+    case FormFieldType.DATE_PICKER:
+      return (
+        <div className="flex border rounded-md border-dark-500 bg-dark-400 overflow-clip">
+          <Image
+            src="/assets/icons/calendar.svg"
+            alt="icon"
+            width={24}
+            height={24}
+            className="ml-2"
+          />
+          <FormControl>
+            <DatePicker
+              selected={field.value}
+              onChange={(date) => field.onChange(date)}
+              showTimeSelect={showTimeSelector}
+              dateFormat={dateFormat ?? "MM/dd/yyyy"}
+              wrapperClassName="date-picker"
+              timeInputLabel="Time:"
+            />
+          </FormControl>
+        </div>
+      );
+    case FormFieldType.SKELETON:
+      return renderSkeleton ? renderSkeleton(field) : null;
     default:
       return null;
   }
 };
 
 const CustomFormField = (props: CustomFormFieldProps) => {
-  const {
-    control,
-    formName,
-    formLabel,
-    formDescription,
-    fieldType,
-  } = props;
+  const { control, formName, formLabel, formDescription, fieldType } = props;
   return (
     <FormField
       control={control}

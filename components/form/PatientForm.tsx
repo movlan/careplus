@@ -1,17 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { z } from "zod";
 
+import { UserFormValidation } from "@/lib/validation";
+import { createUser } from "@/lib/actions/patient.actions";
 import { Form } from "@/components/ui/form";
 import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
-import { useState } from "react";
-import { UserFormValidation } from "@/lib/validation";
-import { useRouter } from "next/navigation";
-import { createUser } from "@/lib/actions/patient.actions";
-import { parseStringify } from "@/lib/utils";
 
 export enum FormFieldType {
   INPUT = "input",
@@ -23,7 +22,7 @@ export enum FormFieldType {
   SKELETON = "skeleton",
 }
 
-export function PatientForm() {
+function PatientForm() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 

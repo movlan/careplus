@@ -1,12 +1,15 @@
+import RegisterForm from "@/components/form/RegisterForm";
+import { getUser } from "@/lib/actions/patient.actions";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
-import PatientForm from "@/components/form/PatientForm";
+const Register = async ({ params: { userId } }: SearchParamProps) => {
+  const user = await getUser(userId);
+  console.log("🚀 ~ Register ~ user:", user);
 
-const Home = () => {
   return (
     <div className="flex h-screen max-h-screen">
-      {/* TODO: OTP Verification | PassKey Modal */}
 
       <section className="container my-auto remove-scrollbar">
         <div className="sub-container max-w-[496px]">
@@ -17,8 +20,8 @@ const Home = () => {
             height={1000}
             className="h-10 mb-12 w-fit"
           />
-
-          <PatientForm />
+          
+          <RegisterForm user={user} />
 
           <div className="flex justify-between mt-20 text-14-regular">
             <p className="justify-items-end text-dark-600 xl:text-left">
@@ -32,14 +35,14 @@ const Home = () => {
       </section>
 
       <Image
-        src={"/assets/images/onboarding-img.png"}
-        alt="patient"
+        src={"/assets/images/register-img.png"}
+        alt="register"
         width={1000}
         height={1000}
-        className="side-img max-w-[50%]"
+        className="side-img max-w-[390px]"
       />
     </div>
   );
 };
 
-export default Home;
+export default Register;
