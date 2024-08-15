@@ -6,13 +6,11 @@ import React from "react";
 
 const Register = async ({ params: { userId } }: SearchParamProps) => {
   const user = await getUser(userId);
-  console.log("🚀 ~ Register ~ user:", user);
 
   return (
     <div className="flex h-screen max-h-screen">
-
       <section className="container my-auto remove-scrollbar">
-        <div className="sub-container max-w-[496px]">
+        <div className="sub-container max-w-[860px]">
           <Image
             src="/assets/icons/logo-full.svg"
             alt="logo"
@@ -20,7 +18,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
             height={1000}
             className="h-10 mb-12 w-fit"
           />
-          
+
           <RegisterForm user={user} />
 
           <div className="flex justify-between mt-20 text-14-regular">

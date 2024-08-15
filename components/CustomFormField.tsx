@@ -19,6 +19,8 @@ import { FormFieldType } from "./form/PatientForm";
 
 import "react-phone-number-input/style.css";
 import "react-datepicker/dist/react-datepicker.css";
+import { Select, SelectContent, SelectTrigger, SelectValue } from "./ui/select";
+import { Textarea } from "./ui/textarea";
 
 interface CustomFormFieldProps {
   control: Control<any>;
@@ -79,7 +81,6 @@ const RenderField = ({
       return (
         <FormControl>
           <PhoneInput
-            placeholder={inputPlaceholder}
             defaultCountry="US"
             international
             countryCallingCodeEditable
@@ -113,6 +114,43 @@ const RenderField = ({
       );
     case FormFieldType.SKELETON:
       return renderSkeleton ? renderSkeleton(field) : null;
+    case FormFieldType.SELECT:
+      return (
+        <FormControl>
+          <Select onValueChange={field.onChange} defaultValue={field.value}>
+            <FormControl>
+              <SelectTrigger className="shad-select-trigger">
+                <SelectValue placeholder={inputPlaceholder} />
+              </SelectTrigger>
+            </FormControl>
+            <SelectContent className="shad-select-content">
+              {props.children}
+            </SelectContent>
+          </Select>
+        </FormControl>
+      );
+    case FormFieldType.TEXT_AREA:
+      return (
+        <FormControl>
+          <Textarea
+            {...field}
+            placeholder={inputPlaceholder}
+            className="shad-textArea"
+            disabled={props.disabled}
+          />
+        </FormControl>
+      );
+    case FormFieldType.CHECKBOX:
+      return (
+        <FormControl>
+          <Input
+            {...field}
+            type="checkbox"
+            className="input-checkbox"
+            checked={field.value}
+          />
+        </FormControl>
+      );
     default:
       return null;
   }
