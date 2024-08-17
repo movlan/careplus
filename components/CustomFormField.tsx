@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import DatePicker from "react-datepicker";
 import { Control } from "react-hook-form";
 import PhoneInput, { Value } from "react-phone-number-input";
@@ -21,6 +21,7 @@ import "react-phone-number-input/style.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { Select, SelectContent, SelectTrigger, SelectValue } from "./ui/select";
 import { Textarea } from "./ui/textarea";
+import { Checkbox } from "./ui/checkbox";
 
 interface CustomFormFieldProps {
   control: Control<any>;
@@ -53,6 +54,8 @@ const RenderField = ({
     inputPlaceholder,
     renderSkeleton,
     showTimeSelector = false,
+    formName,
+    formLabel,
   } = props;
 
   switch (fieldType) {
@@ -143,12 +146,16 @@ const RenderField = ({
     case FormFieldType.CHECKBOX:
       return (
         <FormControl>
-          <Input
-            {...field}
-            type="checkbox"
-            className="input-checkbox"
-            checked={field.value}
-          />
+          <div className="flex items-center gap-4">
+            <Checkbox
+              id={formName}
+              checked={field.value}
+              onCheckedChange={field.onChange}
+            />
+            <label htmlFor={formName} className="checkbox-label">
+              {formLabel}
+            </label>
+          </div>
         </FormControl>
       );
     default:
@@ -158,6 +165,7 @@ const RenderField = ({
 
 const CustomFormField = (props: CustomFormFieldProps) => {
   const { control, formName, formLabel, formDescription, fieldType } = props;
+
   return (
     <FormField
       control={control}

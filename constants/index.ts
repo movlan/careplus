@@ -10,7 +10,7 @@ export const PatientFormDefaultValues = {
   email: "",
   phone: "",
   birthDate: new Date(Date.now()),
-  gender: "Male" as Gender,
+  gender: "male" as Gender,
   address: "",
   occupation: "",
   emergencyContactName: "",
@@ -30,7 +30,7 @@ export const PatientFormDefaultValues = {
   privacyConsent: false,
 };
 
-export const IdentificationTypes = [
+export const identificationTypes = [
   "Birth Certificate",
   "Driver's License",
   "Medical Insurance Card/Policy",

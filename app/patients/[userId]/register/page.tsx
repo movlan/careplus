@@ -1,7 +1,6 @@
 import RegisterForm from "@/components/form/RegisterForm";
 import { getUser } from "@/lib/actions/patient.actions";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 const Register = async ({ params: { userId } }: SearchParamProps) => {
@@ -9,8 +8,8 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
 
   return (
     <div className="flex h-screen max-h-screen">
-      <section className="container my-auto remove-scrollbar">
-        <div className="sub-container max-w-[860px]">
+      <section className="container remove-scrollbar">
+        <div className="sub-container max-w-[860px] flex flex-col py-10">
           <Image
             src="/assets/icons/logo-full.svg"
             alt="logo"
@@ -21,14 +20,9 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
 
           <RegisterForm user={user} />
 
-          <div className="flex justify-between mt-20 text-14-regular">
-            <p className="justify-items-end text-dark-600 xl:text-left">
-              © 2022. All rights reserved
-            </p>
-            <Link href={"/?admin=true"} className="text-green-500">
-              Admin
-            </Link>
-          </div>
+          <p className="copyright py-12">
+            © 2022. All rights reserved
+          </p>
         </div>
       </section>
 
