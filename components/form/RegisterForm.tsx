@@ -69,7 +69,7 @@ function RegisterForm(props: { user: User }) {
       const patient = await registerPatient(patientData);
 
       if (patient) {
-        router.push(`/patients/${patient.$id}/new-appointment`);
+        router.push(`/patients/${user.$id}/new-appointment`);
       }
     } catch (error) {
       console.error(error);
@@ -360,7 +360,7 @@ function RegisterForm(props: { user: User }) {
           />
         </section>
 
-        <SubmitButton isLoading={isLoading}>Submit and Continue</SubmitButton>
+        <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
       </form>
     </Form>
   );
