@@ -1,4 +1,4 @@
-export const genderOptions = [
+export const GenderOptions = [
   { label: "Male", value: "male" },
   { label: "Female", value: "female" },
   { label: "Other", value: "other" },
@@ -30,7 +30,7 @@ export const PatientFormDefaultValues = {
   privacyConsent: false,
 };
 
-export const identificationTypes = [
+export const IdentificationTypes = [
   "Birth Certificate",
   "Driver's License",
   "Medical Insurance Card/Policy",
@@ -44,7 +44,7 @@ export const identificationTypes = [
   "Voter ID Card",
 ];
 
-export const physicianOptions = [
+export const Doctors = [
   {
     image: "/assets/images/dr-green.png",
     name: "John Green",

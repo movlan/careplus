@@ -16,9 +16,9 @@ import { FormFieldType } from "./PatientForm";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import {
-  genderOptions,
-  physicianOptions,
-  identificationTypes,
+  GenderOptions,
+  Doctors,
+  IdentificationTypes,
   PatientFormDefaultValues,
 } from "@/constants";
 import { SelectItem } from "@/components/ui/select";
@@ -145,7 +145,7 @@ function RegisterForm(props: { user: User }) {
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
-                    {genderOptions.map((option, i) => (
+                    {GenderOptions.map((option, i) => (
                       <div key={option.value + i} className="radio-group">
                         <RadioGroupItem
                           value={option.value}
@@ -217,7 +217,7 @@ function RegisterForm(props: { user: User }) {
             formLabel="Primary care physician"
             inputPlaceholder="Select a physician"
           >
-            {physicianOptions.map((doctor, i) => (
+            {Doctors.map((doctor, i) => (
               <SelectItem key={doctor.name + i} value={doctor.name}>
                 <div className="flex cursor-pointer items-center gap-2">
                   <Image
@@ -303,7 +303,7 @@ function RegisterForm(props: { user: User }) {
             formLabel="Identification Type"
             inputPlaceholder="Select identification type"
           >
-            {identificationTypes.map((type, i) => (
+            {IdentificationTypes.map((type, i) => (
               <SelectItem key={type + i} value={type}>
                 {type}
               </SelectItem>

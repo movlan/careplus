@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { SelectItem } from "@/components/ui/select";
-import { physicianOptions } from "@/constants";
+import { Doctors } from "@/constants";
 import {
   createAppointment,
   updateAppointment,
@@ -148,7 +148,7 @@ export const AppointmentForm = (props: AppointmentFormProps) => {
               formLabel="Doctor"
               inputPlaceholder="Select a doctor"
             >
-              {physicianOptions.map((doctor, i) => (
+              {Doctors.map((doctor, i) => (
                 <SelectItem key={doctor.name + i} value={doctor.name}>
                   <div className="flex cursor-pointer items-center gap-2">
                     <Image

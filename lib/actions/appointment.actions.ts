@@ -134,20 +134,20 @@ export const createAppointment = async (
 //   }
 // };
 
-// // GET APPOINTMENT
-// export const getAppointment = async (appointmentId: string) => {
-//   try {
-//     const appointment = await databases.getDocument(
-//       APPWRITE_DB_ID!,
-//       APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
-//       appointmentId
-//     );
+// GET APPOINTMENT
+export const getAppointment = async (appointmentId: string) => {
+  try {
+    const appointment = await databases.getDocument(
+      APPWRITE_DB_ID!,
+      APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
+      appointmentId
+    );
 
-//     return parseStringify(appointment);
-//   } catch (error) {
-//     console.error(
-//       "An error occurred while retrieving the existing patient:",
-//       error
-//     );
-//   }
-// };
+    return parseStringify(appointment);
+  } catch (error) {
+    console.error(
+      "An error occurred while retrieving the existing patient:",
+      error
+    );
+  }
+};
