@@ -16,7 +16,6 @@ const AppointmentSuccess = async (props: SearchParamProps) => {
   const appointment = await getAppointment(appointmentId as string);
   // get doctor info
   const doctor = Doctors.find((d) => d.name === appointment.primaryPhysician);
-  console.log("🚀 ~ AppointmentSuccess ~ doctor:", doctor);
 
   return (
     <div className="flex h-screen max-h-screen px-[5%]">

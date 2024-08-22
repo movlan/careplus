@@ -22,6 +22,7 @@ import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { Form } from "../ui/form";
 import { FormFieldType } from "./PatientForm";
+import clsx from "clsx";
 
 type AppointmentFormProps = {
   userId: string;
@@ -110,7 +111,7 @@ export const AppointmentForm = (props: AppointmentFormProps) => {
         }
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
     setIsLoading(false);
   };
@@ -174,15 +175,15 @@ export const AppointmentForm = (props: AppointmentFormProps) => {
             />
 
             <div
-              className={`flex flex-col gap-6  ${
-                type === "create" && "xl:flex-row"
-              }`}
+              className={clsx("flex flex-col gap-6", {
+                "xl:flex-row": type === "create",
+              })}
             >
               <CustomFormField
                 fieldType={FormFieldType.TEXT_AREA}
                 control={form.control}
                 formName="reason"
-                formLabel="Appointment reason"
+                formLabel="Reason for appointment"
                 inputPlaceholder="Annual montly check-up"
                 disabled={type === "schedule"}
               />
@@ -191,7 +192,7 @@ export const AppointmentForm = (props: AppointmentFormProps) => {
                 fieldType={FormFieldType.TEXT_AREA}
                 control={form.control}
                 formName="note"
-                formLabel="Comments/notes"
+                formLabel="Notes"
                 inputPlaceholder="Prefer afternoon appointments, if possible"
                 disabled={type === "schedule"}
               />

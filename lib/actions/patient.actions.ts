@@ -15,7 +15,6 @@ import { parseStringify } from "../utils";
 import { InputFile } from "node-appwrite/file";
 
 export const createUser = async (user: CreateUserParams) => {
-  console.log("creating user: ", user);
   try {
     const newUser = await users.create(
       ID.unique(),
@@ -34,7 +33,7 @@ export const createUser = async (user: CreateUserParams) => {
 
       return existingUser?.users[0];
     }
-    console.log(error);
+    console.error(error);
   }
 };
 

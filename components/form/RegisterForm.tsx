@@ -191,7 +191,7 @@ function RegisterForm(props: { user: User }) {
               control={form.control}
               formName="emergencyContactName"
               formLabel="Emergency contact name"
-              inputPlaceholder="Guardian's name"
+              inputPlaceholder="Emergency contact name"
             />
 
             <CustomFormField
