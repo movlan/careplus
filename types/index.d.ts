@@ -20,20 +20,20 @@ declare interface User extends CreateUserParams {
 
 declare interface RegisterUserParams extends CreateUserParams {
   address: string;
-  allergies: string | undefined;
+  allergies?: string | undefined;
   birthDate: Date;
-  currentMedication: string | undefined;
+  currentMedication?: string | undefined;
   emergencyContactName: string;
   emergencyContactNumber: string;
-  familyMedicalHistory: string | undefined;
+  familyMedicalHistory?: string | undefined;
   gender: Gender;
-  identificationDocument: FormData | undefined;
-  identificationNumber: string | undefined;
-  identificationType: string | undefined;
+  identificationDocument?: FormData | undefined;
+  identificationNumber?: string | undefined;
+  identificationType?: string | undefined;
   insurancePolicyNumber: string;
   insuranceProvider: string;
   occupation: string;
-  pastMedicalHistory: string | undefined;
+  pastMedicalHistory?: string | undefined;
   primaryPhysician: string;
   privacyConsent: boolean;
   userId: string;

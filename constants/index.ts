@@ -22,7 +22,7 @@ export const PatientFormDefaultValues = {
   currentMedication: "",
   familyMedicalHistory: "",
   pastMedicalHistory: "",
-  identificationType: "Birth Certificate",
+  identificationType: "Driver's License",
   identificationNumber: "",
   identificationDocument: [],
   treatmentConsent: false,

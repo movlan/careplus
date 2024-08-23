@@ -65,7 +65,6 @@ function RegisterForm(props: { user: User }) {
         identificationDocument: formData,
       };
 
-      // @ts-ignore
       const patient = await registerPatient(patientData);
 
       if (patient) {
@@ -93,7 +92,6 @@ function RegisterForm(props: { user: User }) {
           </div>
 
           {/* NAME */}
-
           <CustomFormField
             fieldType={FormFieldType.INPUT}
             control={form.control}
