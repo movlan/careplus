@@ -36,6 +36,7 @@ function PatientForm() {
   });
 
   async function onSubmit(values: z.infer<typeof UserFormValidation>) {
+    console.log("🚀 ~ onSubmit ~ onSubmit:", onSubmit)
     setIsLoading(true);
 
     try {

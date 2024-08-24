@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Doctors } from "@/constants";
 import { getAppointment } from "@/lib/actions/appointment.actions";
+import { getUser } from "@/lib/actions/patient.actions";
 import { formatDateTime } from "@/lib/utils";
+import * as Sentry from "@sentry/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -12,6 +14,9 @@ const AppointmentSuccess = async (props: SearchParamProps) => {
     searchParams: { appointmentId },
   } = props;
 
+  const user = await getUser(userId as string);
+
+  Sentry.metrics.set("user_view_new-appointment-success", user?.name);
   // get appointment info
   const appointment = await getAppointment(appointmentId as string);
   // get doctor info

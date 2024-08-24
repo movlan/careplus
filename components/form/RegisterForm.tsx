@@ -40,6 +40,7 @@ function RegisterForm(props: { user: User }) {
   });
 
   async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
+    console.log("🚀 ~ onSubmit ~ onSubmit:", onSubmit)
     setIsLoading(true);
 
     let formData;

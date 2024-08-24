@@ -2,9 +2,12 @@ import RegisterForm from "@/components/form/RegisterForm";
 import { getUser } from "@/lib/actions/patient.actions";
 import Image from "next/image";
 import React from "react";
+import * as Sentry from "@sentry/nextjs";
 
 const Register = async ({ params: { userId } }: SearchParamProps) => {
   const user = await getUser(userId);
+
+  Sentry.metrics.set("user_view_register", user?.name);
 
   return (
     <div className="flex h-screen max-h-screen">
@@ -20,9 +23,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
 
           <RegisterForm user={user} />
 
-          <p className="copyright py-12">
-            © 2022. All rights reserved
-          </p>
+          <p className="copyright py-12">© 2022. All rights reserved</p>
         </div>
       </section>
 
